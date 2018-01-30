@@ -1,15 +1,17 @@
-//Used for each letter in the current word. Each letter object should either
-//display an underlying character, or a blank placeholder (such as an underscore),
-//depending on whether or not the user has guessed the letter.
-//This should contain letter specific logic and data.
 var Letter = function (ltr) {
   this.letter = ltr;
   this.appear = false;
 
   this.letterRender = function() {
-    if(this.letter == ' '){
-      this.appear = true;
-      return '  ';
+    if (this.letter == ' ') { // if this is a blank space
+        this.appear = true; //mark the space true
+        return '  '; // and return a space to the word
+    } if (this.appear === false) { // if the letter hasn't been guessed
+        return ' _ '; // return letters placeholder
+    } else { // if the letter has appeared (guessed)
+        return this.letter; //show the letter
     }
-  }
-}
+  };
+};
+
+module.exports = Letter;
