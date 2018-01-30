@@ -25,6 +25,23 @@ function Word(wrd) {
 
   this.letterCheck = function (guessedLetter) {
     var whatToReturn = 0;
-  }
+    this.letters.forEach(function(lttr) {
+      if(lttr.letter === guessedLetter){
+        lttr.appear = true;
+        whatToReturn++;
+      }
+    })
+    return whatToReturn;
+  };
 
+  this.wordRender = function() {
+    var display = '';
+    that.letters.forEach(function(lttr){
+      var currentLetter = lttr.letterRender();
+      display+= currentLetter;
+    });
+    return display;
+  };
 }
+
+module.exports = Word;
