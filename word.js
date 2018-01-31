@@ -1,6 +1,7 @@
 var Letter = require('./letter.js');
 
 function Word(wrd) {
+  var that = this;
   this.word = wrd;
   //collection of letter objects
   this.letters = [];
@@ -8,8 +9,8 @@ function Word(wrd) {
 
   this.getLetters = function () {
       //populate the collection above with new Letter objects
-      for (var i = 0; i < this.word.length; i++) {
-          var newLetter = new Letter(this.word[i]);
+      for (var i = 0; i < that.word.length; i++) {
+          var newLetter = new Letter(that.word[i]);
           this.letter.push(newLetter);
       }
   };
