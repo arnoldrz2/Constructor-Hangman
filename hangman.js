@@ -7,11 +7,11 @@ var List = require('./list.js');
 
 // require('events').EventEmiiter.prototype._maxListeners =100;
 
-var wordBank = List.newWord.wordList;
-var guessesRemaining = 10;
+var wordBank = List.newWord.wordList
+var guessesRemaining = 10
   //Empty Array. This will hold letters that have been guessed already.
-var guessedLetters = [];
-var display = 0;
+var guessedLetters = []
+var display = 0
 var currentWord
 
 startGame();
@@ -24,7 +24,7 @@ startGame();
     console.log('---------------------------------------------------------')
 
     if(guessedLetters.length > 0){
-      guessedLetters = [];
+      guessedLetters = []
     }
     inquirer.prompt([{
       name: "play",
@@ -32,7 +32,7 @@ startGame();
       message: "Ready to play?"
     }]).then(function(answer) {
       if(answer.play){
-        newGame();
+        newGame()
       } else {
         console.log("Okay. No one should be forced to do things they don't want to do. See ya!");
       }
@@ -40,8 +40,8 @@ startGame();
 
     function newGame() {
       if(guessesRemaining === 10) {
-        console.log("Get ready!");
-        console.log("Goooooooooooooooo");
+        console.log("Get ready!")
+        console.log("Goooooooooooooooo")
 
         var randNum = Math.floor(Math.random() * wordBank.length);
         currentWord = new Word(wordBank[randNum]);
@@ -72,12 +72,12 @@ startGame();
         var letterReturned = (ltr.chosenLtr);
         var guessedAlready = false;
           for(var i = 0; i < guessedLetters.length; i++){
-            if(letterReturned === guessedLetter[i]){
+            if(letterReturned === guessedLetters[i]){
               guessedAlready = true;
             }
           }
           if(guessedAlready === false){
-            guessedLetter.push(letterReturned);
+            guessedLetters.push(letterReturned);
 
             var found = currentWord.letterCheck(letterReturned);
 
@@ -86,7 +86,7 @@ startGame();
               guessesRemaining--;
               display++;
               console.log("Guesses remain: " + guessesRemaining);
-              console.log([display-1]); //check this later
+              //console.log([display-1]); //check this later
 
               console.log("\n***************");
               console.log(currentWord.wordRender());
