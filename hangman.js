@@ -5,8 +5,6 @@ var isLetter = require('is-letter');
 var Word = require('./word.js');
 var List = require('./list.js');
 
-// require('events').EventEmiiter.prototype._maxListeners =100;
-
 var wordBank = List.newWord.wordList
 var guessesRemaining = 10
   //Empty Array. This will hold letters that have been guessed already.
